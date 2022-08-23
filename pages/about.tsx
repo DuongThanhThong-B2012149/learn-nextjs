@@ -1,6 +1,7 @@
 // import dynamic from 'next/dynamic'
 import Header from '@/components/commons/header'
 import { MainLayout, AdminLayout, EmptyLayout } from '@/components/layout'
+import { Box, Typography } from '@mui/material'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
@@ -38,7 +39,10 @@ const About = (props: Props) => {
     )
   }
   return (
-    <>
+    <Box>
+      <Typography component="h1" variant="h3" color="primary.main">
+        About page
+      </Typography>
       About page
       <Header />
       <ul className="post-list">
@@ -47,7 +51,7 @@ const About = (props: Props) => {
         ))}
       </ul>
       <button onClick={handleNextClick}>Next page</button>
-    </>
+    </Box>
   )
 }
 

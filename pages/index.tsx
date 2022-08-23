@@ -30,6 +30,10 @@ const Home: NextPageWithLayout = () => {
           Welcome to <a href="https://nextjs.org">Next.js! help SEO good</a>
         </h1>
 
+        <Link href={'/swr'}>
+          <a>SWR</a>
+        </Link>
+
         <Link href="/about">
           <a>Go to about</a>
         </Link>
