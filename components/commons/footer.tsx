@@ -1,12 +1,10 @@
 import { Box } from '@mui/material'
 import * as React from 'react'
 
-export interface HeaderProps {}
-
-export function Header(props: HeaderProps) {
+export function Footer() {
   return (
     <Box component="footer" py={2} textAlign="center">
-      Header
+      Footer
     </Box>
   )
 }

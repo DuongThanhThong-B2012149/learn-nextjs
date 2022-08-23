@@ -1,5 +1,5 @@
 // import dynamic from 'next/dynamic'
-import Header from '@/components/commons/header'
+import { Header } from '@/components/commons'
 import { MainLayout, AdminLayout, EmptyLayout } from '@/components/layout'
 import { Box, Typography } from '@mui/material'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
