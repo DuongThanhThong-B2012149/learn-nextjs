@@ -3,6 +3,9 @@ import { red } from '@mui/material/colors'
 
 // Create a theme instance.
 export const theme = createTheme({
+  typography: {
+    fontFamily: 'Heebo,sans-serif',
+  },
   palette: {
     primary: {
       main: '#ff6464',
@@ -42,7 +45,7 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           color: 'black',
-          '&:hover': {
+          '&:hover,&.active': {
             color: '#ff6464',
           },
         },
