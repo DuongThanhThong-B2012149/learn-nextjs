@@ -10,21 +10,16 @@ export const Hero = (props: Props) => {
     <Box component="section" pt={{ xs: 9, md: 18 }} pb={{ xs: 7, md: 9 }}>
       <Container>
         <Stack
-          direction={{ xs: 'column-reverse', md: 'row' }}
           spacing={8}
+          direction={{ xs: 'column-reverse', md: 'row' }}
           alignItems={{ xs: 'center', md: 'flex-start' }}
+          textAlign={{ xs: 'center', md: 'left' }}
         >
           <Box>
-            <Typography
-              variant="h3"
-              component={'h1'}
-              fontWeight="bold"
-              mb={5}
-              textAlign={{ xs: 'center', md: 'left' }}
-            >
+            <Typography variant="h3" component={'h1'} fontWeight="bold" mb={{ xs: 3.5, md: 5 }}>
               Hi, I am John <br />I am the product management{' '}
             </Typography>
-            <Typography mb={5}>
+            <Typography mb={{ xs: 3.5, md: 5 }}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. A amet perspiciatis vitae
               incidunt. Aspernatur eaque iure architecto inventore corporis enim, in cum excepturi
               ad aperiam, nisi officia tenetur distinctio non.
