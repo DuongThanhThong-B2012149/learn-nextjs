@@ -1,3 +1,4 @@
+import { Post } from '@/models/post'
 import { Box, Typography, Link as MuiLink } from '@mui/material'
 import { Container, Stack } from '@mui/system'
 import Link from 'next/link'
@@ -7,6 +8,24 @@ import PostCard from './post-card'
 interface Props {}
 
 export const RecentPost = (props: Props) => {
+  const postList: Post[] = [
+    {
+      id: '1',
+      title: 'Making a design system from scratch',
+      publishedDate: '1661266762505',
+      tagList: ['Design', 'Pattern'],
+      description:
+        'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
+    },
+    {
+      id: '2',
+      title: 'Creating pixel perfect icons in Figma',
+      publishedDate: '1661266762505',
+      tagList: ['Figma', 'Icon', 'Design'],
+      description:
+        'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
+    },
+  ]
   return (
     <Box component="section" bgcolor="secondary.light" pt={2} pb={4}>
       <Container>
@@ -37,12 +56,11 @@ export const RecentPost = (props: Props) => {
             },
           }}
         >
-          <Box>
-            <PostCard />
-          </Box>
-          <Box>
-            <PostCard />
-          </Box>
+          {postList.map((post) => (
+            <Box key={post.id}>
+              <PostCard post={post} />
+            </Box>
+          ))}
         </Stack>
       </Container>
     </Box>
