@@ -2,6 +2,7 @@ import { Work } from '@/models'
 import { Box, Chip, Stack, Typography } from '@mui/material'
 import Image from 'next/image'
 import { format } from 'date-fns'
+
 export interface Props {
   work: Work
 }
