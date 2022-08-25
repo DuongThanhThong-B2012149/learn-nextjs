@@ -51,7 +51,9 @@ export const FeatureWork = (props: Props) => {
   return (
     <Box component="section" pt={2} pb={4}>
       <Container>
-        <Typography variant="h5">Recent Posts</Typography>
+        <Typography variant="h5" mb={2}>
+          Recent Posts
+        </Typography>
         <WorkList workList={workList} />
       </Container>
     </Box>
