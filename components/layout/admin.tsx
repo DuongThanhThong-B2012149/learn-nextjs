@@ -1,5 +1,5 @@
 import { useAuth } from '@/hooks/index'
-import { LayoutProps } from '@/models/common'
+import { LayoutProps } from '@/models'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'

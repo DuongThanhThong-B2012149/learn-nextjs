@@ -1,4 +1,4 @@
-import { Post } from '@/models/post'
+import { Post } from '@/models'
 import { Card, CardContent, Divider, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
