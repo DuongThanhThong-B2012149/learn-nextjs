@@ -1,12 +1,41 @@
+import PostItem from '@/components/blog/post-item'
+import { MainLayout } from '@/components/layout'
+import { Post } from '@/models'
 import { getPostList } from '@/utils/posts'
+import { Box, Divider, Typography } from '@mui/material'
+import { Container } from '@mui/system'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
-interface BlogListPageProps {}
+import Link from 'next/link'
+interface BlogListPageProps {
+  postList: Post[]
+}
 
-const BlogListPage = (props: BlogListPageProps) => {
+const BlogListPage = ({ postList }: BlogListPageProps) => {
   return (
-    <div>
-      <h1>Blog List Page</h1>
-    </div>
+    <Box>
+      <Container>
+        <Typography variant="h4" sx={{ mb: 2 }}>
+          Blog{' '}
+        </Typography>
+        <Box
+          component={'ul'}
+          sx={{
+            listStyle: 'none',
+          }}
+        >
+          {postList.map((post, idx) => (
+            <li key={post.id}>
+              <Link href={`/blog/${post.slug}`}>
+                <a style={{ color: '#000' }}>
+                  <PostItem post={post} />
+                </a>
+              </Link>
+              <Divider sx={{ my: 3 }} />
+            </li>
+          ))}
+        </Box>
+      </Container>
+    </Box>
   )
 }
 
@@ -15,10 +44,14 @@ export const getStaticProps: GetStaticProps<BlogListPageProps> = async (
 ) => {
   // Server-side
   // Build time
-  const data = await getPostList()
+  const postList = await getPostList()
   return {
-    props: {},
+    props: {
+      postList,
+    },
   }
 }
+
+BlogListPage.Layout = MainLayout
 
 export default BlogListPage
