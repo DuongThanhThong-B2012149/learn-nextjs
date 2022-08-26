@@ -1,14 +1,18 @@
-import { Work } from '@/models'
+import { Work } from '@/models/work'
 import { Box, Chip, Stack, Typography } from '@mui/material'
 import Image from 'next/image'
-import { format } from 'date-fns'
+import React from 'react'
 
-export interface Props {
+interface Props {
   work: Work
 }
 
-export const WorkCard = ({ work }: Props) => {
+const WorkCard = ({ work }: Props) => {
   return (
+    // <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+    //   <Box width={{ xs: '100%', sm: '240px' }} flexShrink={0}>
+    //     <Image src={work.thumbnailUrl} width={246} height={180} layout={'responsive'} alt="image" />
+    //   </Box>
     <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
       <Box width={{ xs: '100%', sm: '240px' }} flexShrink={0}>
         <Image src={work.thumbnailUrl} width={246} height={180} layout={'responsive'} alt="image" />
@@ -17,17 +21,14 @@ export const WorkCard = ({ work }: Props) => {
         <Typography variant="h5" fontWeight={'bold'}>
           {work.title}
         </Typography>
-        <Stack direction="row" spacing={2} my={2}>
-          <Chip
-            size="small"
-            color="secondary"
-            label={new Date(Number(work.createdAt)).getFullYear()}
-          />
+        <Stack direction={'row'} alignItems="center" spacing={2} my={2}>
+          <Chip color="secondary" label={new Date(Number(work.createdAt)).getFullYear()} />
           <Typography color="gray">{work.tagList.join(', ')}</Typography>
         </Stack>
-
         <Typography>{work.shortDescription}</Typography>
       </Box>
     </Stack>
   )
 }
+
+export default WorkCard

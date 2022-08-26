@@ -1,5 +1,6 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles'
 import { red } from '@mui/material/colors'
+import { Style } from '@mui/icons-material'
 
 // Create a theme instance.
 export let theme = createTheme({
@@ -20,6 +21,9 @@ export let theme = createTheme({
   },
   components: {
     MuiContainer: {
+      defaultProps: {
+        maxWidth: 'md',
+      },
       styleOverrides: {
         maxWidthSm: {
           maxWidth: '680px',
@@ -34,9 +38,7 @@ export let theme = createTheme({
           },
         },
       },
-      defaultProps: {
-        maxWidth: 'md',
-      },
+
       variants: [],
     },
     MuiLink: {
@@ -51,6 +53,7 @@ export let theme = createTheme({
           },
         },
       },
+      variants: [],
     },
     MuiButton: {
       defaultProps: {},
@@ -59,36 +62,17 @@ export let theme = createTheme({
         {
           props: { variant: 'contained', color: 'primary' },
           style: {
-            color: 'white',
+            color: '#fff',
           },
         },
       ],
     },
     MuiChip: {
-      styleOverrides: {
-        root: {
-          fontSize: '16px',
-          paddingInline: 4,
-        },
-      },
       variants: [
-        {
-          props: { color: 'secondary' },
-          style: {
-            backgroundColor: '#142850',
-            color: '#fff',
-          },
-        },
+        { props: { color: 'secondary' }, style: { backgroundColor: '#142850', color: '#fff' } },
       ],
     },
   },
 })
 
 theme = responsiveFontSizes(theme)
-
-// theme.typography.h3 = {
-//   fontSize: '2rem',
-//   [theme.breakpoints.up('md')]: {
-//     fontSize: '3rem',
-//   },
-// }

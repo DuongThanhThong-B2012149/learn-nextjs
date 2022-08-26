@@ -1,11 +1,6 @@
-import { Work } from '@/models'
-import { Post } from '@/models/post'
-import { Box, Typography, Link as MuiLink } from '@mui/material'
-import { Container, Stack } from '@mui/system'
-import Link from 'next/link'
-import React from 'react'
+import { Work } from '@/models/work'
+import { Box, Container, Typography } from '@mui/material'
 import { WorkList } from '../work'
-import PostCard from './post-card'
 
 interface Props {}
 

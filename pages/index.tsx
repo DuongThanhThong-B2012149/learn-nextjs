@@ -1,13 +1,14 @@
-import { Seo } from '@/components/commons/seo'
-import { FeatureWork, Hero, RecentPost } from '@/components/home'
+import { Seo } from '@/components/common'
+import { Hero } from '@/components/home/'
+import { FeatureWork } from '@/components/home/feature-work'
+import RecentPost from '@/components/home/recent-post'
 import { MainLayout } from '@/components/layout'
 import { Box } from '@mui/material'
 import { NextPageWithLayout } from '../models'
-import styles from '../styles/Home.module.css'
 
 const Home: NextPageWithLayout = () => {
   return (
-    <Box className={styles.container}>
+    <Box>
       <Seo
         data={{
           title: 'NextJs tutorials | Herocodedev',

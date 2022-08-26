@@ -1,22 +1,19 @@
 import StudentDetail from '@/components/swr/StudentDetail'
-import Link from 'next/link'
-import * as React from 'react'
+import React, { useState } from 'react'
 
-export default function SWRPage() {
-  const [detailList, setDetailList] = React.useState([1, 1, 1])
-  const handleAddClick = () => {
-    setDetailList((prevList) => [...prevList, 1])
+interface Props {}
+
+const SWRPage = (props: Props) => {
+  const [list, setList] = useState([1, 1, 1])
+  const handleClick = () => {
+    setList([...list, 1])
   }
   return (
     <div>
-      <h1>SWR Playround</h1>
-      <Link href={'/'}>
-        <a>Navigate</a>
-      </Link>
-
-      <button onClick={handleAddClick}>Add list</button>
+      <h1>SWR Playground</h1>
+      <button onClick={handleClick}>Click</button>
       <ul>
-        {detailList.map((x, index) => (
+        {list.map((item, index) => (
           <li key={index}>
             <StudentDetail studentId="sktwi1cgkkuif36f3" />
           </li>
@@ -25,3 +22,5 @@ export default function SWRPage() {
     </div>
   )
 }
+
+export default SWRPage

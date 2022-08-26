@@ -1,40 +1,36 @@
+import { authApi } from 'api-client'
 import useSWR from 'swr'
 import { PublicConfiguration } from 'swr/dist/types'
-import { authApi } from '../api-client'
 
 export const useAuth = (options?: Partial<PublicConfiguration>) => {
-  // profile
-  //
   const {
     data: profile,
-    error,
     mutate,
+    error,
   } = useSWR('/profile', {
-    dedupingInterval: 60 * 60 * 1000, // 1hr
     revalidateOnFocus: false,
+    dedupingInterval: 60 * 60 * 100,
     ...options,
   })
 
   const firstLoading = profile === undefined && error === undefined
 
   const login = async () => {
+    // 1. Login
     await authApi.login({
-      username: 'hehe',
+      username: 'test123123',
       password: '123123',
     })
 
-    await mutate()
+    // 2. Call api to to update data because app got accessToken
+    mutate() // Trigger api
   }
-
   const logout = async () => {
     await authApi.logout()
-
-    mutate({}, false)
+    await mutate({}, false) // Don't call api when having option false
   }
-
   return {
     profile,
-    error,
     login,
     logout,
     firstLoading,

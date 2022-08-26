@@ -1,7 +1,8 @@
-import Cookies from 'cookies'
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
+
 import httpProxy from 'http-proxy'
+import Cookies from 'cookies'
 // type Data = {
 //   name: string
 // }
@@ -16,22 +17,22 @@ const proxy = httpProxy.createProxyServer()
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<any>) {
   return new Promise((resolve) => {
-    // Convert cookies to header Authorization
+    // Convert cookies
     const cookies = new Cookies(req, res)
-    if (cookies.get('access_token')) {
-      req.headers.Authorization = `Bearer ${cookies.get('access_token')}`
+    const accessToken = cookies.get('access_token')
+    if (accessToken) {
+      req.headers.Authorization = `Bearer ${accessToken}`
     }
-
-    // Don't send cookies to api server
+    // Don't send cookie to server
     req.headers.cookie = ''
 
     proxy.web(req, res, {
-      target: process.env.API_URL,
+      target: process.env.API_URI,
       changeOrigin: true,
-      selfHandleResponse: false, // nếu để false là để cho server proxy tự xử lí response trả về cho client luôn mình không xử lí
+      selfHandleResponse: false,
     })
 
-    proxy.once('proxyRes', () => {
+    proxy.on('proxyRes', () => {
       resolve(true)
     })
   })

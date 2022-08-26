@@ -5,11 +5,16 @@ interface Props {}
 
 const ParamsPage = (props: Props) => {
   const router = useRouter()
-  return <div>ParamsPage: {JSON.stringify(router.query)}</div>
+
+  return (
+    <div>
+      <h1>Params page</h1>
+      <p>{JSON.stringify(router.query)}</p>
+    </div>
+  )
 }
 
 export async function getServerSideProps() {
-  // Fake slow query
   await new Promise((resolve) => setTimeout(resolve, 3000))
   return {
     props: {},

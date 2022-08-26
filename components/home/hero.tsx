@@ -1,31 +1,32 @@
-import { Box, Button, Typography } from '@mui/material'
-import { Container, Stack } from '@mui/system'
-import Image from 'next/image'
+import { Button, Typography } from '@mui/material'
+import { Box, Container, Stack } from '@mui/system'
 import React from 'react'
 import avatar from '@/images/avatar.jpg'
+import Image from 'next/image'
 type Props = {}
 
 export const Hero = (props: Props) => {
   return (
-    <Box component="section" pt={{ xs: 9, md: 18 }} pb={{ xs: 7, md: 9 }}>
+    <Box pt={{ xs: 4, md: 18 }} pb={{ xs: 4, md: 9 }}>
       <Container>
         <Stack
-          spacing={8}
           direction={{ xs: 'column-reverse', md: 'row' }}
           alignItems={{ xs: 'center', md: 'flex-start' }}
           textAlign={{ xs: 'center', md: 'left' }}
+          gap={4}
         >
           <Box>
-            <Typography variant="h3" component={'h1'} fontWeight="bold" mb={{ xs: 3.5, md: 5 }}>
-              Hi, I am John <br />I am the product management{' '}
+            <Typography component="h1" variant="h3" mb={{ xs: 2, md: 5 }}>
+              Hi, I am John <br />
+              Creative Teachnologist{' '}
             </Typography>
-            <Typography mb={{ xs: 3.5, md: 5 }}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. A amet perspiciatis vitae
-              incidunt. Aspernatur eaque iure architecto inventore corporis enim, in cum excepturi
-              ad aperiam, nisi officia tenetur distinctio non.
+            <Typography mb={{ xs: 2, md: 5 }}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut consequuntur tempora
+              autem sunt accusantium, porro nostrum molestiae odit sed placeat reiciendis quia
+              nesciunt! Ipsa quia optio eius architecto, perspiciatis ipsum?
             </Typography>
-            <Button variant="contained" size="large">
-              Dowload Resume
+            <Button variant="contained" color="primary" size="large">
+              Download Resume
             </Button>
           </Box>
           <Box

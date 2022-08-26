@@ -1,5 +1,5 @@
 export interface Post {
-id:string | number;
+  id: number | string
   title: string
   publishedDate: string
   tagList: string[]

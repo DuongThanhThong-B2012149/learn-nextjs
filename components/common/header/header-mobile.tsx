@@ -1,8 +1,10 @@
 import { Box } from '@mui/material'
 import React from 'react'
 
-interface Props {}
+type Props = {}
 
-export const HeaderMobile = (props: Props) => {
+const HeaderMobile = (props: Props) => {
   return <Box display={{ xs: 'block', md: 'none' }}>HeaderMobile</Box>
 }
+
+export default HeaderMobile

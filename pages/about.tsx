@@ -1,37 +1,33 @@
-// import dynamic from 'next/dynamic'
-import { Header } from '@/components/commons'
-import { MainLayout, AdminLayout, EmptyLayout } from '@/components/layout'
+import { Header } from '@/components/common'
+import { AdminLayout } from '@/components/layout'
 import { Box, Typography } from '@mui/material'
-import { GetStaticProps, GetStaticPropsContext } from 'next'
+import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { NextPageWithLayout } from '../models'
 
 interface Props {}
-// const Header = dynamic(() => import('@/components/commons/header'), { ssr: false })
-
-const About = (props: Props) => {
+// const Header = dynamic(() => import('@/components/common/Header'), { ssr: false })
+const About: NextPageWithLayout = (props: Props) => {
   const [postList, setPostList] = useState([])
   const router = useRouter()
-  console.log('About router', router.query)
-  //   useEffect(() => {
-  //     // Check query available .
-  //   }, [])
-  const page = router.query?.page
+  console.log('About query', router.query)
+  const page = Number(router.query?.page)
   useEffect(() => {
     if (!page) return
     ;(async () => {
-      const response = await fetch(`https://js-post-api.herokuapp.com/api/posts?_page=${page}`)
-      const data = await response.json()
+      const response = await fetch(`http://js-post-api.herokuapp.com/api/posts?_page=${page}`)
+      const data: any = await response.json()
       setPostList(data.data)
     })()
   }, [page])
 
-  const handleNextClick = () => {
+  const handlNextPage = () => {
     router.push(
       {
         pathname: '/about',
         query: {
-          page: (Number(page) || 1) + 1,
+          page: (page || 1) + 1,
         },
       },
       undefined,
@@ -41,32 +37,33 @@ const About = (props: Props) => {
   return (
     <Box>
       <Typography component="h1" variant="h3" color="primary.main">
-        About page
+        About Page
       </Typography>
-      About page
+      <h1>About page</h1>
       <Header />
-      <ul className="post-list">
-        {postList.map((p: any) => (
-          <li key={p.id}>{p.title}</li>
+      <ul>
+        {postList.map((post: any, i: number) => (
+          <li key={post.id}>{post.title}</li>
         ))}
       </ul>
-      <button onClick={handleNextClick}>Next page</button>
+      <button onClick={handlNextPage}>Next Page</button>
     </Box>
   )
 }
 
-export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
-  console.log('statis props')
+About.Layout = AdminLayout
+
+export const getStaticProps = (context: GetStaticPropsContext) => {
+  console.log('GET STATIC PROPS')
   return {
-    props: {},
+    props: {}, // will be passed to the page component as props
   }
 }
-
-About.Layout = AdminLayout
 
 // export async function getServerSideProps() {
 //   return {
 //     props: {}, // will be passed to the page component as props
 //   }
 // }
+
 export default About

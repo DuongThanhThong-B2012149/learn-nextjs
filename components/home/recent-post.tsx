@@ -1,13 +1,12 @@
 import { Post } from '@/models/post'
-import { Box, Typography, Link as MuiLink } from '@mui/material'
-import { Container, Stack } from '@mui/system'
+import { Box, Container, Stack, Typography, Link as MuiLink } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
-import PostCard from './post-card'
+import PostCard from './PostCard'
 
 interface Props {}
 
-export const RecentPost = (props: Props) => {
+const RecentPost = (props: Props) => {
   const postList: Post[] = [
     {
       id: '1',
@@ -33,20 +32,16 @@ export const RecentPost = (props: Props) => {
           mb={2}
           direction="row"
           justifyContent={{ xs: 'center', md: 'space-between' }}
-          alignItems={'center'}
+          alignItems="center"
         >
           <Typography variant="h5">Recent Posts</Typography>
           <Link passHref href={'/blog'}>
             <MuiLink sx={{ display: { xs: 'none', md: 'inline' } }}>View all</MuiLink>
           </Link>
         </Stack>
-
         <Stack
-          direction={{
-            xs: 'column',
-            md: 'row',
-          }}
-          spacing={3}
+          direction={{ xs: 'column', md: 'row' }}
+          spacing={2}
           sx={{
             '& > div': {
               width: {
@@ -56,8 +51,8 @@ export const RecentPost = (props: Props) => {
             },
           }}
         >
-          {postList.map((post) => (
-            <Box key={post.id}>
+          {postList.map((post, idx) => (
+            <Box key={idx}>
               <PostCard post={post} />
             </Box>
           ))}
@@ -66,3 +61,5 @@ export const RecentPost = (props: Props) => {
     </Box>
   )
 }
+
+export default RecentPost

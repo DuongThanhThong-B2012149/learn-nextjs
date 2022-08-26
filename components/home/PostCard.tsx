@@ -12,12 +12,12 @@ const PostCard = ({ post }: Props) => {
   return (
     <Card>
       <CardContent>
-        <Typography variant="h5" fontWeight={'bold'}>
+        <Typography variant="h5" fontWeight="bold">
           {post.title}
         </Typography>
-        <Box display={'flex'} my={2}>
+        <Box display="flex" my={2}>
           <Typography variant="body1">
-            {format(Number(post.publishedDate), 'dd MMM yyyy ')}
+            {format(Number(post.publishedDate), 'dd MMM yyyy')}
           </Typography>
           <Divider
             orientation="vertical"
@@ -28,7 +28,6 @@ const PostCard = ({ post }: Props) => {
           />
           <Typography variant="body1">{post.tagList.join(', ')}</Typography>
         </Box>
-
         <Typography variant="body2">{post.description}</Typography>
       </CardContent>
     </Card>

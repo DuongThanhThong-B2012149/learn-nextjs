@@ -1,7 +1,7 @@
-import { Work } from '@/models'
+import { Work } from '@/models/work'
 import { Box, Divider, Typography } from '@mui/material'
 import React, { Fragment } from 'react'
-import { WorkCard } from './work-card'
+import WorkCard from './work-card'
 
 interface Props {
   workList: Work[]
@@ -10,10 +10,10 @@ interface Props {
 export const WorkList = ({ workList }: Props) => {
   return (
     <Box>
-      {workList.map((work, index) => (
-        <Fragment key={work.id}>
+      {workList.map((item, index) => (
+        <Fragment key={item.id}>
           <Box>
-            <WorkCard work={work} />
+            <WorkCard work={item} />
             <Divider sx={{ my: 3 }} />
           </Box>
         </Fragment>

@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import React from 'react'
 
 export interface SeoData {
   title: string
@@ -7,7 +8,7 @@ export interface SeoData {
   thumbnailUrl: string
 }
 
-export interface Props {
+interface Props {
   data: SeoData
 }
 
@@ -15,7 +16,7 @@ export const Seo = ({ data }: Props) => {
   const { title, description, url, thumbnailUrl } = data
   return (
     <Head>
-      <title>NextJs tutorials | Herocodedev</title>
+      <title>{title}</title>
       <meta name="title" content={title} />
       <meta name="description" content={description} />
 
@@ -23,7 +24,7 @@ export const Seo = ({ data }: Props) => {
       <meta property="og:url" content={url} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={thumbnailUrl} />
+      <meta property="og:image" content={description} />
 
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={url} />

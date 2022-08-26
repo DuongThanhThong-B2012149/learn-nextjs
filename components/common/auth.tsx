@@ -1,20 +1,18 @@
 import { useAuth } from '@/hooks/use-auth'
 import { useRouter } from 'next/router'
-import React, { useEffect } from 'react'
+import React, { ReactNode, useEffect } from 'react'
 
 interface Props {
-  children: any
+  children: ReactNode
 }
 
 const Auth = ({ children }: Props) => {
-  const { profile, firstLoading } = useAuth()
   const router = useRouter()
-  console.log(firstLoading)
+  const { profile, firstLoading } = useAuth()
   useEffect(() => {
     if (!firstLoading && !(profile as any)?.username) router.push('/login')
-  }, [firstLoading, router, firstLoading])
-
-  if (!(profile as any)?.username) return <p>Loading....</p>
+  }, [router, profile, firstLoading])
+  if (!(profile as any)?.username) return <p>Loading...</p>
   return <div>{children}</div>
 }
 

@@ -1,25 +1,25 @@
 import React from 'react'
 import useSWR from 'swr'
-
-interface StudentDetailProps {
+interface Props {
   studentId: string
 }
 
-const MILLISECOND_PER_HOUR = 60 * 60 * 1000
+const TIME_CONSTANTS = 60 * 60 * 1000
 
-const StudentDetail = ({ studentId }: StudentDetailProps) => {
-  const { data, mutate, error, isValidating } = useSWR(`/students/${studentId}`, {
+const StudentDetail = ({ studentId }: Props) => {
+  const { data, mutate, isValidating, error } = useSWR(`students/${studentId}`, {
     revalidateOnFocus: false,
-    dedupingInterval: MILLISECOND_PER_HOUR,
+    // revalidateOnMount: false,
+    dedupingInterval: TIME_CONSTANTS,
   })
-
-  const handleMutateClick = () => {
-    mutate({ name: 'hehe' }, true)
+  const handleClick = () => {
+    // mutate({ name: '123' }, true)
+    mutate({ name: '123' }, false)
   }
   return (
     <div>
       Name: {data?.name || '--'}
-      <button onClick={handleMutateClick}>mutate</button>
+      <button onClick={handleClick}>mutate</button>
     </div>
   )
 }

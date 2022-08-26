@@ -1,6 +1,7 @@
+import { Box } from '@mui/material'
 import React from 'react'
-import { HeaderDesktop } from './header-desktop'
-import { HeaderMobile } from './header-mobile'
+import HeaderDesktop from './header-desktop'
+import HeaderMobile from './header-mobile'
 
 type Props = {}
 
